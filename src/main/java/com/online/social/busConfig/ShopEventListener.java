@@ -17,12 +17,12 @@ public class ShopEventListener {
     @Async("googlePoolExecutor")
     @EventListener
     public void googleChanges(ShopEvent shopEvent) {
-        log.info("GoogleChanges :{}", shopEvent.getShopExample().getShopName());
+        log.info("GoogleChanges :{}", shopEvent.getShopExample());
     }
 
     @Async("facebookPoolExecutor")
     @EventListener
     public void facebookChanges(ShopEvent shopEvent) {
-        log.info("FacebookChanges :{}", shopEvent.getShopExample().getShopName());
+        log.info("FacebookChanges :{}", shopEvent.getShopExample());
     }
 }

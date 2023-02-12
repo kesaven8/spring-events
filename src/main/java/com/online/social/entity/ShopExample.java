@@ -19,7 +19,7 @@ public class ShopExample {
     private ShopAttribute<String> shopName;
     private ShopAttribute<String> shopDescription;
 
-    public record ShopAttribute<T>(T t, boolean updated) {
+    public record ShopAttribute<T>(T attribute, boolean updated) {
     }
 }
 

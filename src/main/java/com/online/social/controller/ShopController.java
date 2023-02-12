@@ -4,10 +4,11 @@ import com.online.social.busConfig.ShopEvent;
 import com.online.social.busConfig.ShopEventPublisher;
 import com.online.social.entity.ShopExample;
 import com.online.social.repository.ShopExampleRepository;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Objects;
 
 @RestController
 public class ShopController {
@@ -21,20 +22,14 @@ public class ShopController {
         this.shopEventPublisher = shopEventPublisher;
     }
 
-
-    @GetMapping("/save")
-    public void saveRedis() {
-        var shopExample = shopExampleRepository.save(ShopExample.builder()
-                .shop("shop1")
-                .shopName(new ShopExample.ShopAttribute<>("test001", false)).build());
-
-        var shopSaved = shopExampleRepository.findById(shopExample.getShop()).orElse(null);
-
-        shopEventPublisher.publishShopEvent(new ShopEvent(shopSaved));
-    }
-
-    @PostMapping
+    @PostMapping("/save")
     public void saveShop(@RequestBody ShopExample shopExample) {
+        var savedShop = shopExampleRepository.findById(shopExample.getShop()).orElse(null);
+
+        if (savedShop.getShopDescription() == null || !Objects.equals(savedShop.getShopDescription().attribute(), shopExample.getShopDescription().attribute())) {
+           shopExample.setShopDescription(new ShopExample.ShopAttribute<>(shopExample.getShopDescription().attribute(),true));
+           shopEventPublisher.publishShopEvent(new ShopEvent(shopExample));
+        }
 
     }
 }
