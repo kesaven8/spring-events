@@ -26,7 +26,9 @@ public class ShopController {
                 .shop("shop1")
                 .shopName(new ShopExample.ShopAttribute<>("test001", false)).build());
 
-        var shopSaved = shopExampleRepository.findByShop(shopExample.getShop());
-      //  shopEventPublisher.publishShopEvent(new ShopEvent(shopExample));
+        var shopSaved = shopExampleRepository.findById(shopExample.getShop()).orElse(null);
+
+
+        shopEventPublisher.publishShopEvent(new ShopEvent(shopSaved));
     }
 }

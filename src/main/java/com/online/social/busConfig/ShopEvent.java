@@ -1,16 +1,14 @@
 package com.online.social.busConfig;
 
 import com.online.social.entity.ShopExample;
-import lombok.ToString;
 import org.springframework.context.ApplicationEvent;
 
-@ToString
 public class ShopEvent extends ApplicationEvent {
-
     private ShopExample shopExample;
 
-    public ShopEvent(Object source) {
+    public ShopEvent(ShopExample source) {
         super(source);
+        this.shopExample = source;
     }
 
     public ShopExample getShopExample() {

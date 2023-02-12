@@ -17,6 +17,7 @@ public class ShopExample {
     private String shop;
 
     private ShopAttribute<String> shopName;
+    private ShopAttribute<String> shopDescription;
 
     public record ShopAttribute<T>(T t, boolean updated) {
     }
