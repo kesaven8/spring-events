@@ -1,7 +1,7 @@
 package com.online.social.controller;
 
-import com.online.social.busConfig.ShopEvent;
-import com.online.social.busConfig.ShopEventPublisher;
+import com.online.social.springEvent.ShopEvent;
+import com.online.social.springEvent.ShopEventPublisher;
 import com.online.social.entity.ShopExample;
 import com.online.social.repository.ShopExampleRepository;
 import org.springframework.web.bind.annotation.PostMapping;

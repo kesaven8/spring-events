@@ -1,4 +1,4 @@
-package com.online.social.busConfig;
+package com.online.social.springEvent;
 
 import com.online.social.entity.ShopExample;
 import org.springframework.context.ApplicationEvent;

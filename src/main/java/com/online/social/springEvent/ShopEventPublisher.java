@@ -1,4 +1,4 @@
-package com.online.social.busConfig;
+package com.online.social.springEvent;
 
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
