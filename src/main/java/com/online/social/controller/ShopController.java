@@ -5,6 +5,8 @@ import com.online.social.busConfig.ShopEventPublisher;
 import com.online.social.entity.ShopExample;
 import com.online.social.repository.ShopExampleRepository;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -28,7 +30,11 @@ public class ShopController {
 
         var shopSaved = shopExampleRepository.findById(shopExample.getShop()).orElse(null);
 
-
         shopEventPublisher.publishShopEvent(new ShopEvent(shopSaved));
+    }
+
+    @PostMapping
+    public void saveShop(@RequestBody ShopExample shopExample) {
+
     }
 }
