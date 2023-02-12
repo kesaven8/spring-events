@@ -14,13 +14,13 @@ public class ShopEventListener {
      * @param shopEvent
      * The anotation async runs the method asynchronously
      */
-    @Async
+    @Async("googlePoolExecutor")
     @EventListener
     public void googleChanges(ShopEvent shopEvent) {
         log.info("GoogleChanges :{}", shopEvent.getShopExample().getShopName());
     }
 
-    @Async
+    @Async("facebookPoolExecutor")
     @EventListener
     public void facebookChanges(ShopEvent shopEvent) {
         log.info("FacebookChanges :{}", shopEvent.getShopExample().getShopName());
